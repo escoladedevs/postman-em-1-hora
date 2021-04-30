@@ -4,9 +4,9 @@ Materiais para o curso de Postman em 1 hora
 
 # Simple Books API #
 
-This API allows you to reserve a book.
+API para reservar um livro.
 
-The API is available at `https://simple-books-api.glitch.me`
+A API está disponível no endereço `https://simple-books-api.glitch.me`
 
 ## Endpoints ##
 
@@ -14,90 +14,90 @@ The API is available at `https://simple-books-api.glitch.me`
 
 GET `/status`
 
-Returns the status of the API.
+Retorna o status da API.
 
-### List of books ###
+### Lista de Livros ###
 
 GET `/books`
 
-Returns a list of books.
+Retorna a lista de livros.
 
-Optional query parameters:
+Query parameters opcionais:
 
-- type: fiction or non-fiction
-- limit: a number between 1 and 20.
+- type: fiction ou non-fiction
+- limit: número entre 1 e 20
 
 
-### Get a single book ###
+### Consulta Livro ###
 
 GET `/books/:bookId`
 
-Retrieve detailed information about a book.
+Retorna informações sobre um livro em específico
 
 
-### Submit an order ###
+### Reservar um livro ###
 
 POST `/orders`
 
-Allows you to submit a new order. Requires authentication.
+Reserva um livro em específico. Requer autenticação.
 
-The request body needs to be in JSON format and include the following properties:
+O request body tem que estar em formato JSON e ter as seguintes propriedades:
 
- - `bookId` - Integer - Required
- - `customerName` - String - Required
+ - `bookId` - int - Obrigatório
+ - `customerName` - String - Obrigatório
 
-Example
+Exemplo
 ```
 POST /orders/
-Authorization: Bearer <YOUR TOKEN>
+Authorization: Bearer <TOKEN>
 
 {
   "bookId": 1,
-  "customerName": "John"
+  "customerName": "Gil do Vigor"
 }
 ```
 
-The response body will contain the access token.
+A resposta conterá o token de acesso
 
-### Get all orders ###
+### Retorna todas as reservas ###
 
 GET `/orders`
 
-Allows you to view all orders. Requires authentication.
+Permite visualizar todas as reservas. Requer autenticação.
 
-### Get an order ###
+### Retorna reserva ###
 
 GET `/orders/:orderId`
 
-Allows you to view an existing order. Requires authentication.
+Permite visualizar uma reserva em específico. Requer autenticação.
 
-### Update an order ###
+### Atualiza reserva ###
 
 PATCH `/orders/:orderId`
 
-Update an existing order. Requires authentication.
+Atualiza uma ordem em específico. Requer autenticação.
 
-The request body needs to be in JSON format and allows you to update the following properties:
+O request body tem que estar em formato JSON e ter as seguintes propriedades:
 
  - `customerName` - String
 
- Example
+ Exemplo
 ```
 PATCH /orders/PF6MflPDcuhWobZcgmJy5
 Authorization: Bearer <YOUR TOKEN>
 
 {
-  "customerName": "John"
+  "customerName": "Gil do Vigor"
 }
 ```
 
-### Delete an order ###
+### Exclui reserva ###
 
 DELETE `/orders/:orderId`
 
-Delete an existing order. Requires authentication.
+Exclui uma reserva. Requer autenticação.
 
-The request body needs to be empty.
+A requisição deve estar vazia.
 
  Example
 ```
@@ -105,13 +105,13 @@ DELETE /orders/PF6MflPDcuhWobZcgmJy5
 Authorization: Bearer <YOUR TOKEN>
 ```
 
-## API Authentication ##
+## Autenticação ##
 
-To submit or view an order, you need to register your API client.
+Para lidar com reservas, você precisará criar uma token de acesso.
 
 POST `/api-clients/`
 
-The request body needs to be in JSON format and include the following properties:
+O request body tem que estar em formato JSON e ter as seguintes propriedades:
 
  - `clientName` - String
  - `clientEmail` - String
@@ -120,9 +120,9 @@ The request body needs to be in JSON format and include the following properties
 
  ```
  {
-    "clientName": "Valentin",
-    "clientEmail": "valentin@example.com"
+    "clientName": "Gil do Vigor",
+    "clientEmail": "gil@dovigor.com"
 }
  ```
 
-The response body will contain the access token.
+A resposta conterá o token de acesso.
